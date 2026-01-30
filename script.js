@@ -56,7 +56,8 @@ let questionActuelle = null;
 let session = {
     numeroQuestion: 1,
     total: 20,
-    score: 0
+    score: 0,
+    paysUtilises: [] // Tableau pour suivre les pays déjà utilisés
 };
 
 // Éléments DOM
@@ -75,7 +76,8 @@ function demarrerSession() {
     session = {
         numeroQuestion: 1,
         total: 20,
-        score: 0
+        score: 0,
+        paysUtilises: [] // Réinitialiser la liste des pays utilisés
     };
     scoreFinal.classList.add('hidden');
     genererQuestion();
@@ -88,9 +90,21 @@ function genererQuestion() {
         return;
     }
 
-    // Sélectionner un pays aléatoire pour la bonne réponse
-    const indexBonneReponse = Math.floor(Math.random() * pays.length);
-    const bonneReponse = pays[indexBonneReponse];
+    // Filtrer les pays non encore utilisés
+    const paysDisponibles = pays.filter(p => !session.paysUtilises.includes(p.code));
+
+    // Vérifier qu'il reste assez de pays disponibles
+    if (paysDisponibles.length === 0) {
+        console.error('Tous les pays ont été utilisés');
+        return;
+    }
+
+    // Sélectionner un pays aléatoire parmi les pays non utilisés
+    const indexBonneReponse = Math.floor(Math.random() * paysDisponibles.length);
+    const bonneReponse = paysDisponibles[indexBonneReponse];
+
+    // Ajouter ce pays à la liste des pays utilisés
+    session.paysUtilises.push(bonneReponse.code);
 
     // Sélectionner 3 autres pays différents pour les mauvaises réponses
     const mauvasesReponses = [];
