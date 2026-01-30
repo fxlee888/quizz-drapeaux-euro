@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz des Drapeaux Européens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quiz des Drapeaux Européens</h1>
+            <p class="progression" id="progression">Question 1/20</p>
+        </header>
+
+        <main>
+            <div class="flag-container">
+                <img id="flag-image" src="" alt="Drapeau à identifier">
+            </div>
+
+            <div class="quiz-section">
+                <form id="quiz-form">
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="answer" value="0">
+                            <span id="option-0"></span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="answer" value="1">
+                            <span id="option-1"></span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="answer" value="2">
+                            <span id="option-2"></span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="answer" value="3">
+                            <span id="option-3"></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="btn-valider" class="btn btn-primary">Valider</button>
+                </form>
+
+                <div id="feedback" class="feedback hidden"></div>
+
+                <button id="btn-suivant" class="btn btn-secondary hidden">Question suivante</button>
+
+                <div id="score-final" class="score-final hidden">
+                    <h2>Session terminée!</h2>
+                    <p id="score-text"></p>
+                    <button id="btn-nouvelle-session" class="btn btn-primary">Nouvelle session</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Images des drapeaux fournies par <a href="https://flagcdn.com" target="_blank">FlagCDN</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
