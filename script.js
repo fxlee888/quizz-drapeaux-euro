@@ -1,5 +1,57 @@
 // Variables globales
-let pays = [];
+const pays = [
+    {"nom": "Albanie", "code": "al"},
+    {"nom": "Allemagne", "code": "de"},
+    {"nom": "Andorre", "code": "ad"},
+    {"nom": "Arménie", "code": "am"},
+    {"nom": "Autriche", "code": "at"},
+    {"nom": "Azerbaïdjan", "code": "az"},
+    {"nom": "Belgique", "code": "be"},
+    {"nom": "Biélorussie", "code": "by"},
+    {"nom": "Bosnie-Herzégovine", "code": "ba"},
+    {"nom": "Bulgarie", "code": "bg"},
+    {"nom": "Chypre", "code": "cy"},
+    {"nom": "Croatie", "code": "hr"},
+    {"nom": "Danemark", "code": "dk"},
+    {"nom": "Espagne", "code": "es"},
+    {"nom": "Estonie", "code": "ee"},
+    {"nom": "Finlande", "code": "fi"},
+    {"nom": "France", "code": "fr"},
+    {"nom": "Géorgie", "code": "ge"},
+    {"nom": "Grèce", "code": "gr"},
+    {"nom": "Hongrie", "code": "hu"},
+    {"nom": "Irlande", "code": "ie"},
+    {"nom": "Islande", "code": "is"},
+    {"nom": "Italie", "code": "it"},
+    {"nom": "Kosovo", "code": "xk"},
+    {"nom": "Lettonie", "code": "lv"},
+    {"nom": "Liechtenstein", "code": "li"},
+    {"nom": "Lituanie", "code": "lt"},
+    {"nom": "Luxembourg", "code": "lu"},
+    {"nom": "Macédoine du Nord", "code": "mk"},
+    {"nom": "Malte", "code": "mt"},
+    {"nom": "Moldavie", "code": "md"},
+    {"nom": "Monaco", "code": "mc"},
+    {"nom": "Monténégro", "code": "me"},
+    {"nom": "Norvège", "code": "no"},
+    {"nom": "Pays-Bas", "code": "nl"},
+    {"nom": "Pologne", "code": "pl"},
+    {"nom": "Portugal", "code": "pt"},
+    {"nom": "République tchèque", "code": "cz"},
+    {"nom": "Roumanie", "code": "ro"},
+    {"nom": "Royaume-Uni", "code": "gb"},
+    {"nom": "Russie", "code": "ru"},
+    {"nom": "Saint-Marin", "code": "sm"},
+    {"nom": "Serbie", "code": "rs"},
+    {"nom": "Slovaquie", "code": "sk"},
+    {"nom": "Slovénie", "code": "si"},
+    {"nom": "Suède", "code": "se"},
+    {"nom": "Suisse", "code": "ch"},
+    {"nom": "Turquie", "code": "tr"},
+    {"nom": "Ukraine", "code": "ua"},
+    {"nom": "Vatican", "code": "va"}
+];
+
 let questionActuelle = null;
 let session = {
     numeroQuestion: 1,
@@ -17,20 +69,6 @@ const feedback = document.getElementById('feedback');
 const scoreFinal = document.getElementById('score-final');
 const scoreText = document.getElementById('score-text');
 const btnNouvelleSession = document.getElementById('btn-nouvelle-session');
-
-// Charger la liste des pays depuis le JSON
-async function chargerPays() {
-    try {
-        const response = await fetch('data/pays.json');
-        pays = await response.json();
-        demarrerSession();
-    } catch (error) {
-        console.error('Erreur lors du chargement des pays:', error);
-        feedback.textContent = 'Erreur lors du chargement des données. Veuillez recharger la page.';
-        feedback.className = 'feedback error';
-        feedback.classList.remove('hidden');
-    }
-}
 
 // Démarrer une nouvelle session de quiz
 function demarrerSession() {
@@ -191,4 +229,4 @@ btnSuivant.addEventListener('click', questionSuivante);
 btnNouvelleSession.addEventListener('click', nouvelleSession);
 
 // Initialisation au chargement de la page
-window.addEventListener('DOMContentLoaded', chargerPays);
+window.addEventListener('DOMContentLoaded', demarrerSession);
